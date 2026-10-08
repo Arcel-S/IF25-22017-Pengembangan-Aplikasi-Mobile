@@ -2,6 +2,9 @@ package com.itera.pam.p4.latihan
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,7 +35,12 @@ fun LabeledTextField(
     value: String,
     onValueChange: (String) -> Unit
 ) {
-    // TODO: Implement dengan OutlinedTextField(value = value, onValueChange = onValueChange, label = { Text(label) })
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(label) },
+        modifier = Modifier.fillMaxWidth()
+    )
 }
 
 // Parent yang menyimpan state
@@ -43,13 +51,22 @@ fun Handson2Screen() {
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Latihan 2: Form dengan State Hoisting")
+        Spacer(modifier = Modifier.height(8.dp))
 
         LabeledTextField(
             label = "Name",
             value = name,
             onValueChange = { name = it }
         )
-        // TODO: Tambahkan email field pakai LabeledTextField yang sama, hoisted ke `email`
-        // TODO: Tampilkan preview data, misal: Text("Hello, $name! Email: $email")
+        Spacer(modifier = Modifier.height(8.dp))
+
+        LabeledTextField(
+            label = "Email",
+            value = email,
+            onValueChange = { email = it }
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text("Hello, $name! Email: $email")
     }
 }
